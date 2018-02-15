@@ -19,6 +19,11 @@ pipeline {
         powershell(returnStatus: true, script: '..\\\\Build\\\\RestoreNugget.ps1 -branch ${env.BRANCH_NAME}')
       }
     }
+    stage('FxCop') {
+      steps {
+        tool 'FxCop MSV14'
+      }
+    }
   }
   environment {
     stage = 'premier'
